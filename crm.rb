@@ -45,24 +45,24 @@ class CRM
   def modify_existing_contact
    puts "Please enter the first_name of the contact you want to update."
    contact_name = gets.chomp
-   found_contact = Contact.find_by("first_name", contact_name)
+   found_contact = Contact.find_by_first_name(contact_name)
    puts "What would you like to modify: first_name, last_name, email or note?"
    variable = gets.chomp
    puts "Enter the value for #{variable}"
    value = gets.chomp
-   found_contact.update(variable, value)
+   found_contact.update(variable => value)
   end
 
   def delete_contact
     puts "Please enter the first_name of the contact you want to delete."
     contact_name=gets.chomp
-    found_contact = Contact.find_by("first_name", contact_name)
+    found_contact = Contact.find_by_first_name(contact_name)
     puts "#{found_contact}"
     found_contact.delete
   end
 
   def display_all_contacts
-    a = Contact.all
+    a = Contact.all.inspect
     puts a
   end
 
@@ -71,7 +71,7 @@ class CRM
     attribute=gets.chomp
     puts "Enter the value for #{attribute}"
     value=gets.chomp
-    found_contact=Contact.find_by(attribute, value)
+    found_contact = Contact.find_by(attribute => value)
     puts found_contact
   end
 
