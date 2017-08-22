@@ -29,8 +29,15 @@ class CRM
   print 'Enter a Note: '
   note = gets.chomp.to_s
 
-  a=Contact.create(first_name, last_name, email, note)
-  puts a
+  # a=Contact.create(first_name, last_name, email, note)
+  # puts a
+  new_contact = Contact.create(
+  first_name: first_name,
+  last_name:  last_name,
+  email:      email,
+  note:       note
+)
+  puts new_contact
 
   end
 
@@ -93,8 +100,6 @@ end
 end
 a_crm_app = CRM.new("Hello")
 a_crm_app.main_menu
-
-
 
 
 at_exit do
